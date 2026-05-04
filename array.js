@@ -24,8 +24,9 @@ console.log(reverseArray,"rev");
 // 5) Find first largest Element
 
 const firstLargestElement=Array.sort((a,b)=>b-a);
-const firstLarEle=firstLargestElement?.length>0&&firstLargestElement[2];
+const firstLarEle=firstLargestElement?.length>0&&firstLargestElement[0];
 console.log(firstLarEle,"firstLEle");
+
 
 // 6) Remove duplicates from array
 
