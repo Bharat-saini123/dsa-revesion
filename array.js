@@ -67,6 +67,29 @@ const sortedArray=[1,2,3,4,5,6,7,10];
 const checkSortedOrNot=[...sortedArray]?.every((v,i,a)=>i===0||a[i]===0||a[i]>=a[i-1]);
 console.log(checkSortedOrNot,"checkSortedOrNot")
 
+const checkSorted = (arr) => {
+  if (arr.length <= 1) return true;
+
+  let isIncreasing = true;
+  let isDecreasing = true;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > arr[i-1]) {
+      isDecreasing = false; // Bada element mila, toh decreasing nahi ho sakta
+    }
+    if (arr[i] < arr[i-1]) {
+      isIncreasing = false; // Chota element mila, toh increasing nahi ho sakta
+    }
+  }
+
+  return isIncreasing || isDecreasing;
+};
+
+// Test Cases
+console.log("Increasing [11, 23, 67]:", checkSorted([11, 23, 67]));
+console.log("Decreasing [67, 23, 11]:", checkSorted([67, 23, 11]));
+console.log("Unsorted [23, 67, 11]:", checkSorted([23, 67, 11]));
+console.log("Empty []:", checkSorted([]));
 
 // 12) Count occurrences of an element
 const currentOccurrencesArray=[1,2,3,4,10,3,4,3,3];
