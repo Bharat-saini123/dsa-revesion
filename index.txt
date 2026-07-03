@@ -539,3 +539,281 @@ Count number of digits in a number
 
 const n4=12345;
 console.log(n4.toString().length); // 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Object//
+
+
+
+
+1. Sum of Object Values
+Question
+const obj = {
+  a: 10,
+  b: 20,
+  c: 30
+};
+
+// Output: 60
+Answer
+function sumObject(obj) {
+  let sum = 0;
+
+  for (let key in obj) {
+    sum += obj[key];
+  }
+
+  return sum;
+}
+
+console.log(sumObject({ a: 10, b: 20, c: 30 }));
+2. Find Maximum Value Key
+Question
+const obj = {
+  a: 50,
+  b: 10,
+  c: 100,
+  d: 40
+};
+
+// Output: c
+Answer
+function maxKey(obj) {
+  let max = -Infinity;
+  let ans = "";
+
+  for (let key in obj) {
+    if (obj[key] > max) {
+      max = obj[key];
+      ans = key;
+    }
+  }
+
+  return ans;
+}
+
+console.log(maxKey(obj));
+3. Swap Keys and Values
+Question
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+// Output
+// {1:"a",2:"b",3:"c"}
+Answer
+function swap(obj) {
+
+const result={};
+
+for(let key in obj){
+
+result[obj[key]]=key;
+
+}
+
+return result;
+
+}
+
+console.log(swap(obj));
+4. Check Key Exists
+Question
+const obj = {
+  name: "Bharat",
+  age: 25
+};
+
+// key = "age"
+Answer
+function checkKey(obj,key){
+
+return key in obj;
+
+}
+
+console.log(checkKey(obj,"age"));
+5. Remove a Key
+Question
+const obj = {
+  a:1,
+  b:2,
+  c:3
+};
+
+// remove b
+Answer
+function removeKey(obj,key){
+
+delete obj[key];
+
+return obj;
+
+}
+
+console.log(removeKey(obj,"b"));
+6. Merge Two Objects
+Question
+const obj1={
+a:1,
+b:2
+}
+
+const obj2={
+c:3,
+d:4
+}
+Answer
+function merge(obj1,obj2){
+
+return {...obj1,...obj2};
+
+}
+
+console.log(merge(obj1,obj2));
+7. Flatten Object ⭐ (Very Common)
+Question
+const obj = {
+  a: true,
+  b: "hello",
+  c: {
+    e: "hi",
+    d: {
+      f: "test"
+    }
+  }
+};
+
+Output
+
+{
+  a:true,
+  b:"hello",
+  "c.e":"hi",
+  "c.d.f":"test"
+}
+Answer
+function flatten(obj, parent = "", result = {}) {
+
+  for (let key in obj) {
+
+    let newKey = parent ? parent + "." + key : key;
+
+    if (
+      typeof obj[key] === "object" &&
+      obj[key] !== null &&
+      !Array.isArray(obj[key])
+    ) {
+      flatten(obj[key], newKey, result);
+    } else {
+      result[newKey] = obj[key];
+    }
+  }
+
+  return result;
+}
+
+console.log(flatten(obj));
+8. Deep Equal
+Question
+obj1={
+a:1,
+b:{
+c:2
+}
+}
+
+obj2={
+a:1,
+b:{
+c:2
+}
+}
+Answer
+function deepEqual(obj1,obj2){
+
+return JSON.stringify(obj1)===JSON.stringify(obj2);
+
+}
+
+console.log(deepEqual(obj1,obj2));
+
+Interview mein batana ki JSON.stringify() simple cases ke liye theek hai, lekin production-level deep equality ke liye recursive approach better hoti hai.
+
+9. Count Total Keys (Nested)
+Question
+const obj={
+a:1,
+b:{
+c:2,
+d:{
+e:3
+}
+}
+}
+
+// Output
+
+5
+Answer
+function countKeys(obj){
+
+let count=0;
+
+for(let key in obj){
+
+count++;
+
+if(typeof obj[key]=="object" && obj[key]!=null){
+
+count+=countKeys(obj[key]);
+
+}
+
+}
+
+return count;
+
+}
+
+console.log(countKeys(obj));
+10. Deep Clone
+Question
+
+Clone object without changing original.
+
+Answer
+const obj={
+a:1,
+b:{
+c:2
+}
+}
+
+const copy=structuredClone(obj);
+
+copy.b.c=100;
+
+console.log(obj.b.c);
+
+//2
