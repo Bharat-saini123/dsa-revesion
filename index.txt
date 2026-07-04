@@ -341,6 +341,25 @@ for(let i=1;i<arrS.length;i++){
 }
 console.log(arrS); // [1,2,5,9]
 
+Bubble
+
+Adjacent elements swap karta hai
+Har pass me largest end me jata hai
+Bahut swaps hote hain
+
+Selection
+
+Minimum dhoondta hai
+Har pass me smallest beginning me aata hai
+Har pass me 1 swap
+
+insertion
+
+Elements ko shift karke insert karta hai
+Left part hamesha sorted rehta hai
+Shifting hoti hai, swap nahi
+
+
 Linear search
 
 console.log(arrS.indexOf(5)); // 2
